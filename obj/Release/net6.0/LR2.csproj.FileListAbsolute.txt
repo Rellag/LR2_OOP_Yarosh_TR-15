@@ -1,0 +1,15 @@
+/Users/vladinin/Desktop/OOP/LR2/LR2/bin/Release/net6.0/LR2
+/Users/vladinin/Desktop/OOP/LR2/LR2/bin/Release/net6.0/LR2.deps.json
+/Users/vladinin/Desktop/OOP/LR2/LR2/bin/Release/net6.0/LR2.runtimeconfig.json
+/Users/vladinin/Desktop/OOP/LR2/LR2/bin/Release/net6.0/LR2.dll
+/Users/vladinin/Desktop/OOP/LR2/LR2/bin/Release/net6.0/LR2.pdb
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.csproj.AssemblyReference.cache
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.AssemblyInfoInputs.cache
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.AssemblyInfo.cs
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.csproj.CoreCompileInputs.cache
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.dll
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/refint/LR2.dll
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.pdb
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/LR2.genruntimeconfig.cache
+/Users/vladinin/Desktop/OOP/LR2/LR2/obj/Release/net6.0/ref/LR2.dll
