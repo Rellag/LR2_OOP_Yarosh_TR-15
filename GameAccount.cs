@@ -3,14 +3,13 @@ namespace LR2
 {
     public class GameAccount
     {
-        public string UserName { get; private set; }
-        public int CurrentRating { get; private set; }
-        public int GamesCount { get; private set; }
-        public string Type { get; private set; }
-        public int WinStreak { get; private set; }
+        public string UserName { get; set; }
+        public int CurrentRating { get;  set; }
+        public int GamesCount { get; set; }
+        public int WinStreak { get;  set; }
         
         // types: common, safeLooser, winStreaker
-        public GameAccount(string userName, int сurrentRating, int gamesCount, string type = "common")
+        public GameAccount(string userName, int сurrentRating, int gamesCount)
         {
             if (сurrentRating < 0 || gamesCount < 0)
             {
@@ -20,11 +19,10 @@ namespace LR2
             UserName = userName;
             CurrentRating = сurrentRating;
             GamesCount = gamesCount;
-            Type = type;
         }
 
 
-        public void WinGame(GameAccount opponent, Game game)
+        public virtual void WinGame(GameAccount opponent, Game game)
         {
 
             if (game.addRating < 0 || game.addOpponentRating < 0)
@@ -39,7 +37,7 @@ namespace LR2
 
             WinStreak++;
             opponent.WinStreak = 0;
-            if(WinStreak >= 3 && Type == "winStreaker")//if 3 games were won 
+            if(WinStreak >= 3)//if 3 games were won 
             {
                  game.addRating *= 2;
             }
@@ -49,12 +47,12 @@ namespace LR2
 
             GamesCount++;
 
-            if (opponent.Type == "safeLooser")
+            if (opponent is SafeLoserAc)
             {
                 game.addOpponentRating /= 2;
             }
-            
-                opponent.CurrentRating -= game.addOpponentRating;
+
+            opponent.CurrentRating -= game.addOpponentRating;
             
             
             
@@ -70,7 +68,7 @@ namespace LR2
 
         }
 
-        public void LoseGame(GameAccount opponent, Game game)
+        public virtual void LoseGame(GameAccount opponent, Game game)
         {
 
             if (game.addRating < 0 || game.addOpponentRating < 0)
@@ -85,21 +83,17 @@ namespace LR2
 
             WinStreak = 0;
             opponent.WinStreak++;
-            if(Type == "safeLooser")
-            {
-                game.addRating /= 2;
-                Console.WriteLine(game.addRating);
-            }
+            
          
-                CurrentRating -= game.addRating;
+            CurrentRating -= game.addRating;
             
 
-            if (opponent.WinStreak >= 3 && opponent.Type == "winStreaker")
+            if (opponent.WinStreak >= 3 && opponent is WinnerAc)
             {
                 game.addOpponentRating *= 2;
             }
            
-                opponent.CurrentRating += game.addOpponentRating;
+            opponent.CurrentRating += game.addOpponentRating;
             
            
             PrintLose(opponent, game);
@@ -110,7 +104,7 @@ namespace LR2
 
         }
 
-        private void AddToStatLose(GameAccount opponent, Game game)
+        public void AddToStatLose(GameAccount opponent, Game game)
         {
             Stat.ManeStat.AddFirst(new Stat( game.addOpponentRating, game.addRating, opponent.UserName, UserName, opponent.CurrentRating, CurrentRating));
 
@@ -118,7 +112,7 @@ namespace LR2
 
         }
 
-        private void AddToStatWin(GameAccount opponent, Game game)
+        public void AddToStatWin(GameAccount opponent, Game game)
         {
             Stat.ManeStat.AddFirst(new Stat(game.addRating,game.addOpponentRating, UserName, opponent.UserName, CurrentRating, opponent.CurrentRating));
 
@@ -126,13 +120,13 @@ namespace LR2
 
         }
 
-        private void PrintLose(GameAccount opponent, Game game)
+        public void PrintLose(GameAccount opponent, Game game)
         {
             Console.WriteLine(UserName + " " + CurrentRating + " (- {0}) " + "LOST" + " " +
                 opponent.UserName + " " + opponent.CurrentRating + " (+ {1})", game.addRating, game.addOpponentRating);
         }
 
-        private void PrintWin(GameAccount opponent, Game game)
+        public void PrintWin(GameAccount opponent, Game game)
         {
             Console.WriteLine(UserName + " " + CurrentRating + " (+ {0}) " + "WON" + " " +
                  opponent.UserName + " " + opponent.CurrentRating + " (- {1})", game.addRating, game.addOpponentRating);

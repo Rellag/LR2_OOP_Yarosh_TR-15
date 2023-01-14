@@ -3,10 +3,11 @@ using LR2;
 
 Console.WriteLine("Hello, World!");
 
-var Vlad = new GameAccount("vlad", 1000, 0, "safeLooser");
+var Vlad = new SafeLoserAc("vlad", 1000, 0);
 var Ilysha = new GameAccount("ilysha", 1000, 0);
 var Alex = new GameAccount("alex", 1000, 0);
-var Bodya = new GameAccount("bodya", 1000, 0, "winStreaker");
+var Bodya = new WinnerAc("bodya", 1000, 0);
+
 
 var game = new GetGame();
 
@@ -29,3 +30,5 @@ Ilysha.LoseGame(Bodya, game.GetStandartGame());
 Stat.GetStats();
 
 Stat.GetStats(Vlad);
+
+Console.ReadKey();
